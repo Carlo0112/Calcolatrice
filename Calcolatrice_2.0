@@ -1,0 +1,93 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Diagnostics;
+
+namespace ConsoleApplication12
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] opList = new string[] {
+                "+", "-", "*", "/", "Rad","Rad3","^"
+            };
+
+            Console.Title = "Calcolatrice";
+            Console.WriteLine("Menu/Calc:  ");
+            string scelta = Console.ReadLine();
+            if (scelta == "Menu")
+            {
+                Process.Start("C:\\Users\\pc\\Desktop\\Calcolatrice\\ConsoleApplication12\\Menu.exe");
+                Console.ReadLine();
+            }
+            while (true)
+            {
+                Console.Write("Inserisci un operatore: ");
+                string op = Console.ReadLine();
+
+                if (opList.Contains(op))
+                {
+                    Console.Write("Inserisci un primo numero: ");
+                    double num1 = Convert.ToDouble(Console.ReadLine());
+                    double num2 = 0;
+                    if (op != "Rad")
+                    if (op != "Rad3")
+                        {
+                            Console.Write("Inserisci un secondo numero: ");
+                            num2 = Convert.ToDouble(Console.ReadLine());
+
+                        }
+                    
+                     
+
+                    double risultato = 0.0;
+
+                    if (op == "*")
+                    {
+                        risultato = num1 * num2;
+                    }
+                    else if (op == "+")
+                    {
+                        risultato = num1 + num2;
+                    }
+                    else if (op == "-")
+                    {
+                        risultato = num1 - num2;
+                    }
+                    else if (op == "/")
+                    {
+                        risultato = num1 / num2;
+                    }
+                    else if (op == "^")
+                    {
+                        risultato = Math.Pow(num1, num2);
+                    }
+                    else if (op.Equals("Rad", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        risultato = Math.Sqrt(num1);
+                    }
+                    else if (op.Equals("Rad3", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        risultato = Math.Pow(num1, 1.0 / 3.0);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Non hai inserito un operatore corretto riprova");
+                        Console.ReadLine();
+                    }
+
+
+                    Console.WriteLine("Risultato: " + risultato);
+                }
+                
+                }
+
+                Console.ReadLine();
+            }
+        }
+    }
+
+
